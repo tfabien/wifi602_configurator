@@ -1,4 +1,4 @@
-# WifiBell Configurator
+# Wifi DoorBell Configurator
 
 ## Web UI for Wifi-enabled doorbells configuration.
 
