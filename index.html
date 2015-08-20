@@ -1,351 +1,307 @@
 <html>
-	<head>
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<div class="page-header">
-			<div class="col-sm-1">
-				<img src="logo.jpg" class="img-responsive"/>
-			</div>
-			<div class="col-sm-11">
-				<h1>Konx <small>Wifi Doorbell</small></h1>
-			</div>
-		</div>
-	
-		<div>
-		  <!-- Nav tabs -->
-		  <ul class="nav nav-tabs nav-justified" role="tablist">
-			<li role="presentation" class="active"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Status</a></li>
-			<li role="presentation"><a href="#mail" aria-controls="mail" role="tab" data-toggle="tab">Mail</a></li>
-			<li role="presentation"><a href="#ftp" aria-controls="mail" role="ftp" data-toggle="tab">FTP</a></li>
-			<li role="presentation"><a href="#alarm" aria-controls="alarm" role="tab" data-toggle="tab">Alarm</a></li>
-		  </ul>
-		  <br/>
-		  
-
-		  <!-- Tab panes -->
-		  <div class="tab-content">
-			
-			<div role="tabpanel" class="tab-pane active" id="status">
-				<div class="col-sm-9">
-				<form class="form form-horizontal">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Alias</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="status" data-cgi-set="alias" data-param="alias"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Device ID</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="status" data-param="deviceid" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Device Type</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="status" data-param="devicetype" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Version</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="status" data-param="sys_ver" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">MAC</label>
-						<div class="col-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon">
-									<span class="glyphicon glyphicon-transfer"></span>
-								</span>
-								<input type="text" class="form-control" data-cgi-get="status" data-param="mac" />
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10 col-sm-offset-2">
-							<div class="input-group">
-								<span class="input-group-addon">
-									<span class="glyphicon glyphicon-signal"></span>
-								</span>
-								<input type="text" class="form-control" data-cgi-get="status" data-param="wifimac" />
-							</div>
-						</div>
-					</div>
-				</form>
-				</div>
-				<div class="col-sm-3">
-					<img id="snapshot" src="" alt="No snapshot available" class="img img-responsive" />
-				</div>
-			</div>
-		  
-			<div role="tabpanel" class="tab-pane" id="mail">
-				<form class="form form-horizontal">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Server</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_svr"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Port</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_port"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">User</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_user"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Password</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_pwd"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">SSL</label>
-						<div class="col-sm-10">
-							<input type="checkbox" data-cgi-get="params" data-cgi-set="mail" data-param="mailssl"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Sender</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_sender"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Receivers</label>
-						<div class="col-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-								<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_receiver1"/>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10 col-sm-offset-2">
-							<div class="input-group">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-								<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_receiver2"/>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10 col-sm-offset-2">
-							<div class="input-group">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-								<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_receiver3"/>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10 col-sm-offset-2">
-							<div class="input-group">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-								<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_receiver4"/>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-			
-			<div role="tabpanel" class="tab-pane" id="ftp">
-				<form class="form form-horizontal">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Server</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_svr"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Port</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_port"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">User</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_user"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Password</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_pwd"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Mode</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_mode"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Directory</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_dir"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Filename</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_filename"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Upload interval</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_upload_interval"/>
-						</div>
-					</div>
-				</form>
-			</div>
-			
-			<div role="tabpanel" class="tab-pane" id="alarm">
-				<form class="form form-horizontal" data-cgi="set_alarm">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Motion</label>
-						<div class="col-sm-10">
-							<input type="checkbox" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_motion_armed"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Motion sensitivity</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_motion_sensitivity"/>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Input</label>
-						<div class="col-sm-10">
-							<input type="checkbox" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_input_armed"/>
-						</div>
-					</div>
-				
-					
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Snapshot</label>
-						<div class="col-sm-10">
-							<input type="checkbox" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_snapshot"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Record</label>
-						<div class="col-sm-10">
-							<input type="checkbox" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_record"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Mail</label>
-						<div class="col-sm-10">
-							<input type="checkbox" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_mail"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">HTTP</label>
-						<div class="col-sm-10">
-							<input type="checkbox" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_http"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">HTTP URL</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_http_url"/>
-						</div>
-					</div>
-				</form>
-			</div>
-			
-		</div>
-		</div>
-
-		<script>
-			var DOORBELL_URL = '';
-			var DOORBELL_USER = 'admin';
-			var DOORBELL_PASSWORD = 'XXXXXXXX';
-			
-			var SNAPSHOT_REFRESH_DELAY = 2500;
-			var update_snapshot = function() {
-				var timestamp = new Date().getTime();
-				$('#snapshot').attr('src', DOORBELL_URL + '/snapshot.cgi?cam_user=' + DOORBELL_USER + '&cam_pwd=' + DOORBELL_PASSWORD + '&_=' + timestamp);
-				setTimeout(update_snapshot, SNAPSHOT_REFRESH_DELAY);
-			}
-			
-			var cgi_get = function(cgi, data) {
-				cgi_call('get_' + cgi, data).success(function() { update_fields($('[data-cgi-get="' + cgi + '"]')); });
-			}
-			
-			var cgi_set = function(cgi, data) {
-				var data = { };
-				$('[data-cgi-set="' + cgi + '"]').each(function() {
-					var param = $(this).attr('data-param');
-					var value = $(this).val();
-					if ($(this).is(':checkbox')) {
-						value = $(this).prop("checked") ? 1 : 0;
-					}
-					data[param] = value;
-				});
-				
-				cgi_call('set_' + cgi, data).success(function() {
-					var cgis = $.unique( $('[data-cgi-set="' + cgi + '"]').map(function() { return $(this).attr('data-cgi-get') }) );
-					$(cgis).each(function() { cgi_get(this) });
-				});
-			}
-			
-			var cgi_call = function(cgi, data) {
-				console.log('Calling cgi: ', cgi, data);
-				
-				return $.ajax(DOORBELL_URL + '/' + cgi + '.cgi', {
-					dataType: 'script',
-					data: $.extend({}, {
-						'cam_user': DOORBELL_USER,
-						'cam_pwd' : DOORBELL_PASSWORD,
-					}, data)
-				});
-			}
-			
-			var update_fields = function(fields) {
-				console.log('Updating fields: ', fields);
-				$(fields).each(function() {
-					var param = $(this).attr('data-param');
-					try { var value = eval(param); } catch(e) { console.log(e); }
-					if ($(this).is(':checkbox')) {
-						$(this).prop("checked", value == 1);
-					} else {
-						$(this).val(value);
-					}
-				});
-			}
-			
-			var refresh = function() {
-				var cgis = $.unique( $('[data-cgi-get]').map(function() { return $(this).attr('data-cgi-get'); }) );
-				$(cgis).each(function() { cgi_get(this); });
-			}
-		
-			$(function() {
-				update_snapshot();				
-				refresh();
-				
-				$('.page-header').click(refresh);
-				
-				$('[data-cgi-get]:not([data-cgi-set])').attr('disabled', 'disabled');
-				$('[data-cgi-set]').change(function() {
-					cgi_set($(this).attr('data-cgi-set'));
-				});
-				
-			});
-		</script>
-	</body>
+   <head>
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script src="js/config.js"></script>
+      <script src="js/index.js"></script>
+   </head>
+   <body>
+      <div class="page-header">
+         <div class="col-sm-1">
+            <img src="img/logo.jpg" class="img-responsive"/>
+         </div>
+         <div class="col-sm-11">
+            <h1>Konx <small>Wifi Doorbell</small></h1>
+         </div>
+      </div>
+      <div class="page-body">
+         <!-- Nav tabs -->
+         <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li role="presentation" class="active"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Status</a></li>
+            <li role="presentation"><a href="#mail" aria-controls="mail" role="tab" data-toggle="tab">Mail</a></li>
+            <li role="presentation"><a href="#ftp" aria-controls="mail" role="ftp" data-toggle="tab">FTP</a></li>
+            <li role="presentation"><a href="#alarm" aria-controls="alarm" role="tab" data-toggle="tab">Alarm</a></li>
+         </ul>
+         <br/>
+         <!-- Tab panes -->
+         <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="status">
+               <div class="col-sm-9">
+                  <form class="form form-horizontal">
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">Alias</label>
+                        <div class="col-sm-10">
+                           <input type="text" class="form-control" data-cgi-get="status" data-cgi-set="alias" data-param="alias"/>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">Device ID</label>
+                        <div class="col-sm-10">
+                           <input type="text" class="form-control" data-cgi-get="status" data-param="deviceid" />
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">Device Type</label>
+                        <div class="col-sm-10">
+                           <input type="text" class="form-control" data-cgi-get="status" data-param="devicetype" />
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">Version</label>
+                        <div class="col-sm-10">
+                           <input type="text" class="form-control" data-cgi-get="status" data-param="sys_ver" />
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">MAC</label>
+                        <div class="col-sm-10">
+                           <div class="input-group">
+                              <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-transfer" data-toggle="tooltip" data-placement="left" title="Ethernet"></span>
+                              </span>
+                              <input type="text" class="form-control" data-cgi-get="status" data-param="mac" />
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                           <div class="input-group">
+                              <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-signal" data-toggle="tooltip" data-placement="left" title="Wifi"></span>
+                              </span>
+                              <input type="text" class="form-control" data-cgi-get="status" data-param="wifimac" />
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div class="col-sm-3">
+                  <img id="snapshot" src="" alt="No snapshot available" class="img img-responsive" />
+               </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="mail">
+               <form class="form form-horizontal">
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Server <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Mail service server"></span></label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_svr"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Port <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Mail service port"></span></label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_port"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">User <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Mail service user"></span></label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_user"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Password <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Mail service password"></span></label>
+                     <div class="col-sm-10">
+                        <input type="password" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_pwd"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">SSL <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Mail service uses SSL"></span></label>
+                     <div class="col-sm-10">
+                        <input type="checkbox" data-cgi-get="params" data-cgi-set="mail" data-param="mailssl"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Sender <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Mail sender"></label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_sender"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Receivers <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="List of receivers"></label>
+                     <div class="col-sm-10">
+                        <div class="input-group">
+                           <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                           <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_receiver1"/>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="col-sm-10 col-sm-offset-2">
+                        <div class="input-group">
+                           <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                           <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_receiver2"/>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="col-sm-10 col-sm-offset-2">
+                        <div class="input-group">
+                           <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                           <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_receiver3"/>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="col-sm-10 col-sm-offset-2">
+                        <div class="input-group">
+                           <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                           <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="mail" data-param="mail_receiver4"/>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="ftp">
+               <form class="form form-horizontal">
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Server</label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_svr"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Port</label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_port"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">User</label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_user"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Password</label>
+                     <div class="col-sm-10">
+                        <input type="password" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_pwd"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Mode</label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_mode"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Directory</label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_dir"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Filename</label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_filename"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Upload interval</label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="ftp" data-param="ftp_upload_interval"/>
+                     </div>
+                  </div>
+               </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="alarm">
+               <form class="form form-horizontal" data-cgi="set_alarm">
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Motion <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Enable motion detection alarm"></label>
+                     <div class="col-sm-10">
+                        <input type="checkbox" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_motion_armed"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Motion sensitivity <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Motion detection sensitivity"></label>
+                     <div class="col-sm-10">
+						<select  class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_motion_sensitivity">
+							<option value=""/></option>
+							<option value="0"/>0 - Low</option>
+							<option value="1"/>1</option>
+							<option value="2"/>2</option>
+							<option value="3"/>3</option>
+							<option value="4"/>4</option>
+							<option value="5"/>5 - Medium</option>
+							<option value="6"/>6</option>
+							<option value="7"/>7</option>
+							<option value="8"/>8</option>
+							<option value="9"/>9 - High</option>
+						</select>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Input</label>
+                     <div class="col-sm-10">
+                        <input type="checkbox" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_input_armed"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">IO linkage <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Enable IO linkage alarm"></label>
+                     <div class="col-sm-10">
+                        <input type="checkbox" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_iolinkage"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">IO Level</label>
+                     <div class="col-sm-10">
+                        <div class="input-group">
+                           <span class="input-group-addon">IN</span>
+						   <select  class="form-control"  data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_ioin_level">
+							<option value=""/></option>
+							<option value="0"/>Low</option>
+							<option value="1"/>High</option>
+						   </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="col-sm-10 col-sm-offset-2">
+                        <div class="input-group">
+                           <span class="input-group-addon">OUT</span>
+                           <select  class="form-control"  data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_ioout_level">
+							<option value=""/></option>
+							<option value="0"/>Low</option>
+							<option value="1"/>High</option>
+						   </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Snapshot <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Enable snapshot on alarm"></label>
+                     <div class="col-sm-10">
+                        <input type="checkbox" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_snapshot"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Record <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Enable record on alarm"></label>
+                     <div class="col-sm-10">
+                        <input type="checkbox" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_record"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Mail <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Enable send mail on alarm"></label>
+                     <div class="col-sm-10">
+                        <input type="checkbox" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_mail"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">HTTP <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Enable send HTTP notification on alarm"></label>
+                     <div class="col-sm-10">
+                        <input type="checkbox" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_http"/>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">HTTP URL <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="HTTP notification URL"></label>
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" data-cgi-get="params" data-cgi-set="alarm" data-param="alarm_http_url"/>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>
